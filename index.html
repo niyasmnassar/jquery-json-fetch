@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  ul li{
+    list-style: none;
+    display: block;
+    margin: 0 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  p{margin: 10px 0px;}
+  img {
+    display: block;
+
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<div id="dvProdList">
+<ul></ul>
+</div>
+ 
+<script>
+$(document).ready(function () {
+  var jsonURL = "https://my-json-server.typicode.com/niyasmnassar/bookingDoctor/category";
+  $.getJSON(jsonURL, function (json) 
+  {
+    var imgList= "";
+
+    $.each(json, function () {
+      imgList += '<li><img src= "' + this.avatar + '"><h4>'+ this.doctorname+'</h4><h5>'+ this.department+'</h5><p>'+ this.qualification+'</p></li>';
+    });
+
+   $('#dvProdList ul').append(imgList);
+  });
+});
+</script>
+ 
+</body>
+</html>
